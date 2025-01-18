@@ -24,7 +24,7 @@ def load_csv_files(file1, file2):
         return None, None
 
 # --- 2. Feature Importance (Before Clustering) ---
-@st.cache
+@st.cache_data
 def compute_overall_feature_importance(df):
     """
     Compute feature importance for the entire dataset before clustering.
@@ -61,7 +61,7 @@ def compute_overall_feature_importance(df):
     return sorted_importance
 
 # --- 3. Cluster Analysis ---
-@st.cache
+@st.cache_data
 def perform_clustering(df, num_clusters=3):
     """
     Perform clustering analysis using K-Means and add cluster labels to the DataFrame.
@@ -92,7 +92,7 @@ def perform_clustering(df, num_clusters=3):
     return df
 
 # --- 4. Feature Importance for Each Cluster ---
-@st.cache
+@st.cache_data
 def compute_feature_importance(df):
     """
     Compute feature importance for each cluster using XGBoost.
