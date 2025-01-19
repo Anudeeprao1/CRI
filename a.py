@@ -78,17 +78,6 @@ def perform_clustering(df, num_clusters=3):
     kmeans = KMeans(n_clusters=num_clusters, random_state=42)
     df['Cluster'] = kmeans.fit_predict(features_scaled)
 
-    # Visualize Clusters (using PCA for 2D projection)
-    pca = PCA(n_components=2)
-    pca_components = pca.fit_transform(features_scaled)
-    plt.figure(figsize=(10, 7))
-    sns.scatterplot(x=pca_components[:, 0], y=pca_components[:, 1], hue=df['Cluster'], palette='Set2', s=100)
-    plt.title('Clusters Based on Features')
-    plt.xlabel('PCA Component 1')
-    plt.ylabel('PCA Component 2')
-    plt.legend(title='Cluster')
-    st.pyplot(plt)
-
     return df
 
 # --- 4. Feature Importance for Each Cluster ---
